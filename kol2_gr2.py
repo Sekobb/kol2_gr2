@@ -38,7 +38,27 @@ def main():
 	print dziennik.srednia('fizyka', 'Wojciech Nowak')
 	print dziennik.obecnosc('matematyka', 'Jan Kowalski')
 
+	dziennik.student_usun("Jan Kowalski")
+	try:
+		print dziennik.obecnosc('matematyka', 'Jan Kowalski')
+	except KeyError, e:
+		print 'Nie odnaleziono informacji - brak klucza: %s' % str(e)
 
-if __name__ == "__main__":
+	dziennik.przedmiot_usun("fizyka")
+	try:
+		print dziennik.spr_srednia('fizyka', 'Wojciech Nowak')
+	except KeyError, e:
+		print 'Nie odnaleziono informacji - brak klucza: %s' % str(e)
+
+	dziennik.przedmiot_dodaj('python')
+	dziennik.student_dodaj('Marian Bzik')
+
+	dziennik.dodaj('python', 'Marian Bzik', 'spr', 1)
+	dziennik.dodaj('python', 'Marian Bzik', 'spr', 4)  
+	dziennik.dodaj('python', 'Marian Bzik', 'spr', 2) 
+
+	print dziennik.spr_srednia('python', 'Marian Bzik')
+
+if __name__ == '__main__':
 	main()
 
