@@ -15,22 +15,30 @@
 # data in text files (YAML, JSON).
 # If you have even more courage, try implementing user interface.
 
-
 from diary import *
 
 def main():
-	dziennik = diary()
 
-	dziennik.dodaj_studenta(student('Jan', 'Kowalski'))
+	przedmioty = ['matematyka', 'fizyka', 'cpp']
+	studenci = ['Jan Kowalski', 'Wojciech Nowak', 'Jerzy Gzik']
 
-	(dziennik.stud(0)).dodaj_ocena_spr(5)
-	(dziennik.stud(0)).dodaj_ocena_spr(4)
-	(dziennik.stud(0)).dodaj_ocena_inna(4)
+	dziennik = diary(przedmioty, studenci)
 
-	print(dziennik.studenci[0].srednia_ogolna())
-	print(dziennik.studenci[0].srednia_spr())
+	dziennik.dodaj('fizyka', 'Wojciech Nowak', 'spr', 4)
+	dziennik.dodaj('fizyka', 'Wojciech Nowak', 'spr', 5)
+	dziennik.dodaj('fizyka', 'Wojciech Nowak', 'spr', 5)
+	dziennik.dodaj('fizyka', 'Wojciech Nowak', 'inne', 2)
 
+	dziennik.dodaj('matematyka', 'Jan Kowalski', 'ob', 1)
+	dziennik.dodaj('matematyka', 'Jan Kowalski', 'ob', 0)
+	dziennik.dodaj('matematyka', 'Jan Kowalski', 'ob', 0)
+	dziennik.dodaj('matematyka', 'Jan Kowalski', 'ob', 0)
+
+	print dziennik.spr_srednia('fizyka', 'Wojciech Nowak')
+	print dziennik.srednia('fizyka', 'Wojciech Nowak')
+	print dziennik.obecnosc('matematyka', 'Jan Kowalski')
 
 
 if __name__ == "__main__":
 	main()
+
